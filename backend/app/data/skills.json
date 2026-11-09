@@ -1,0 +1,453 @@
+{
+ "Python": [
+  "python",
+  "python3",
+  "python programming"
+ ],
+ "Java": [
+  "java",
+  "java programming"
+ ],
+ "JavaScript": [
+  "javascript",
+  "js",
+  "ecmascript",
+  "es6"
+ ],
+ "TypeScript": [
+  "typescript"
+ ],
+ "C++": [
+  "c++",
+  "cpp"
+ ],
+ "C#": [
+  "c#",
+  "csharp",
+  "c sharp"
+ ],
+ "C": [
+  "c programming",
+  "c language"
+ ],
+ "Go": [
+  "golang",
+  "go language"
+ ],
+ "Rust": [
+  "rust"
+ ],
+ "PHP": [
+  "php"
+ ],
+ "Ruby": [
+  "ruby",
+  "ruby on rails"
+ ],
+ "Swift": [
+  "swiftui",
+  "swift programming",
+  "swift language"
+ ],
+ "Kotlin": [
+  "kotlin"
+ ],
+ "Scala": [
+  "scala"
+ ],
+ "R": [
+  "r programming",
+  "r language"
+ ],
+ "MATLAB": [
+  "matlab"
+ ],
+ "Dart": [
+  "dart"
+ ],
+ "SQL": [
+  "sql",
+  "t-sql",
+  "pl/sql",
+  "plsql"
+ ],
+ "HTML": [
+  "html",
+  "html5"
+ ],
+ "CSS": [
+  "css",
+  "css3"
+ ],
+ "Bash": [
+  "bash",
+  "shell scripting",
+  "shell script"
+ ],
+ "React": [
+  "react",
+  "react.js",
+  "reactjs",
+  "react js"
+ ],
+ "Angular": [
+  "angular",
+  "angularjs",
+  "angular.js"
+ ],
+ "Vue": [
+  "vue",
+  "vue.js",
+  "vuejs"
+ ],
+ "Next.js": [
+  "next.js",
+  "nextjs"
+ ],
+ "Redux": [
+  "redux"
+ ],
+ "Tailwind CSS": [
+  "tailwind",
+  "tailwindcss",
+  "tailwind css"
+ ],
+ "Bootstrap": [
+  "bootstrap"
+ ],
+ "jQuery": [
+  "jquery"
+ ],
+ "React Native": [
+  "react native",
+  "react-native"
+ ],
+ "Flutter": [
+  "flutter"
+ ],
+ "Node.js": [
+  "node",
+  "node.js",
+  "nodejs"
+ ],
+ "Express": [
+  "express.js",
+  "expressjs",
+  "express js"
+ ],
+ "Django": [
+  "django"
+ ],
+ "Flask": [
+  "flask"
+ ],
+ "FastAPI": [
+  "fastapi",
+  "fast api"
+ ],
+ "Spring Boot": [
+  "spring boot",
+  "springboot",
+  "spring framework"
+ ],
+ ".NET": [
+  ".net",
+  "dotnet",
+  "asp.net",
+  ".net core"
+ ],
+ "Laravel": [
+  "laravel"
+ ],
+ "REST API": [
+  "rest",
+  "restful",
+  "rest api",
+  "rest apis",
+  "restful api",
+  "restful apis"
+ ],
+ "GraphQL": [
+  "graphql"
+ ],
+ "Microservices": [
+  "microservices",
+  "microservice"
+ ],
+ "Machine Learning": [
+  "machine learning",
+  "ml"
+ ],
+ "Deep Learning": [
+  "deep learning"
+ ],
+ "Artificial Intelligence": [
+  "artificial intelligence",
+  "ai"
+ ],
+ "NLP": [
+  "nlp",
+  "natural language processing"
+ ],
+ "Computer Vision": [
+  "computer vision"
+ ],
+ "Data Science": [
+  "data science"
+ ],
+ "Data Analysis": [
+  "data analysis",
+  "data analytics"
+ ],
+ "Statistics": [
+  "statistics",
+  "statistical analysis"
+ ],
+ "TensorFlow": [
+  "tensorflow"
+ ],
+ "PyTorch": [
+  "pytorch"
+ ],
+ "Keras": [
+  "keras"
+ ],
+ "scikit-learn": [
+  "scikit-learn",
+  "scikit learn",
+  "sklearn"
+ ],
+ "Pandas": [
+  "pandas"
+ ],
+ "NumPy": [
+  "numpy"
+ ],
+ "Matplotlib": [
+  "matplotlib"
+ ],
+ "Seaborn": [
+  "seaborn"
+ ],
+ "OpenCV": [
+  "opencv"
+ ],
+ "Hugging Face": [
+  "hugging face",
+  "huggingface"
+ ],
+ "LLM": [
+  "llm",
+  "llms",
+  "large language models",
+  "large language model"
+ ],
+ "Generative AI": [
+  "generative ai",
+  "genai",
+  "gen ai"
+ ],
+ "Spark": [
+  "apache spark",
+  "pyspark",
+  "spark"
+ ],
+ "Hadoop": [
+  "hadoop"
+ ],
+ "Kafka": [
+  "kafka"
+ ],
+ "Airflow": [
+  "airflow"
+ ],
+ "ETL": [
+  "etl"
+ ],
+ "Data Visualization": [
+  "data visualization",
+  "data visualisation"
+ ],
+ "Power BI": [
+  "power bi",
+  "powerbi"
+ ],
+ "Tableau": [
+  "tableau"
+ ],
+ "Excel": [
+  "ms excel",
+  "microsoft excel",
+  "advanced excel"
+ ],
+ "Looker": [
+  "looker"
+ ],
+ "Databases": [
+  "database",
+  "databases",
+  "rdbms",
+  "dbms"
+ ],
+ "MySQL": [
+  "mysql"
+ ],
+ "PostgreSQL": [
+  "postgresql",
+  "postgres"
+ ],
+ "MongoDB": [
+  "mongodb",
+  "mongo db"
+ ],
+ "Redis": [
+  "redis"
+ ],
+ "SQLite": [
+  "sqlite"
+ ],
+ "Oracle": [
+  "oracle sql",
+  "oracle database",
+  "oracle db"
+ ],
+ "Elasticsearch": [
+  "elasticsearch",
+  "elastic search"
+ ],
+ "DynamoDB": [
+  "dynamodb"
+ ],
+ "Cassandra": [
+  "cassandra"
+ ],
+ "Snowflake": [
+  "snowflake"
+ ],
+ "BigQuery": [
+  "bigquery",
+  "big query"
+ ],
+ "NoSQL": [
+  "nosql"
+ ],
+ "AWS": [
+  "aws",
+  "amazon web services"
+ ],
+ "Azure": [
+  "azure",
+  "microsoft azure"
+ ],
+ "GCP": [
+  "gcp",
+  "google cloud",
+  "google cloud platform"
+ ],
+ "Docker": [
+  "docker"
+ ],
+ "Kubernetes": [
+  "kubernetes",
+  "k8s"
+ ],
+ "Terraform": [
+  "terraform"
+ ],
+ "Ansible": [
+  "ansible"
+ ],
+ "Jenkins": [
+  "jenkins"
+ ],
+ "CI/CD": [
+  "ci/cd",
+  "cicd",
+  "ci cd",
+  "continuous integration"
+ ],
+ "Git": [
+  "git"
+ ],
+ "GitHub": [
+  "github"
+ ],
+ "GitLab": [
+  "gitlab"
+ ],
+ "Linux": [
+  "linux"
+ ],
+ "Nginx": [
+  "nginx"
+ ],
+ "DevOps": [
+  "devops"
+ ],
+ "Agile": [
+  "agile"
+ ],
+ "Scrum": [
+  "scrum"
+ ],
+ "Jira": [
+  "jira"
+ ],
+ "Figma": [
+  "figma"
+ ],
+ "Selenium": [
+  "selenium"
+ ],
+ "Testing": [
+  "unit testing",
+  "test automation",
+  "pytest",
+  "junit",
+  "jest"
+ ],
+ "Cybersecurity": [
+  "cybersecurity",
+  "cyber security",
+  "information security"
+ ],
+ "Blockchain": [
+  "blockchain"
+ ],
+ "Android": [
+  "android"
+ ],
+ "iOS": [
+  "ios"
+ ],
+ "Firebase": [
+  "firebase"
+ ],
+ "Postman": [
+  "postman"
+ ],
+ "System Design": [
+  "system design"
+ ],
+ "Data Structures": [
+  "data structures",
+  "dsa"
+ ],
+ "OOP": [
+  "oop",
+  "object oriented programming",
+  "object-oriented programming"
+ ],
+ "SEO": [
+  "seo"
+ ],
+ "Salesforce": [
+  "salesforce"
+ ],
+ "SAP": [
+  "sap"
+ ],
+ "Project Management": [
+  "project management"
+ ]
+}

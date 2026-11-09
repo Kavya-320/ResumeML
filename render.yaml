@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: resumeml
+    runtime: python
+    plan: standard
+    buildCommand: pip install --upgrade pip && pip install torch --index-url https://download.pytorch.org/whl/cpu && pip install -r requirements.txt && python -m backend.preload
+    startCommand: python -m uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: MODEL_CACHE_DIR
+        value: /opt/render/project/src/.model_cache
+      - key: CORS_ORIGINS
+        value: "*"

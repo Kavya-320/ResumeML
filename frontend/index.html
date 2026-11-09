@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ResumeML — Intelligent Resume Screening</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo"><div class="logo-mark">⚡</div><span>Resume<strong>ML</strong></span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="#home" class="nav-link" data-view="home">Home</a>
+      <a href="#how-it-works" class="nav-link" data-view="how-it-works">How It Works</a>
+      <a href="#features" class="nav-link" data-view="features">Features</a>
+      <a href="#screening" class="nav-link" data-view="screening">Screening</a>
+      <a href="#architecture" class="nav-link" data-view="architecture">Architecture</a>
+      <a href="#about" class="nav-link" data-view="about">About</a>
+    </div>
+    <a href="#screening" class="nav-cta">Start Screening →</a>
+    <button class="nav-burger" id="navBurger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<main>
+<section id="view-home" class="view hero">
+  <div class="hero-bg"><div class="hb-orb orb1"></div><div class="hb-orb orb2"></div><div class="hb-orb orb3"></div><div class="grid-overlay"></div></div>
+  <div class="hero-content">
+    <h1 class="hero-title">Resume Screening<br><span class="gradient-text">using Machine Learning</span></h1>
+    <p class="hero-desc">Rank hundreds of resumes against a job description using pretrained semantic AI, verified skill matching and extracted experience. Every score is bounded between 0 and 100 and fully explainable.</p>
+    <div class="hero-actions">
+      <a href="#screening" class="btn-primary"><span>🚀</span> Start Screening</a>
+      <a href="#how-it-works" class="btn-ghost">See how it works →</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat"><span class="hstat-num">0–100</span><span class="hstat-lbl">Bounded Score</span></div><div class="hstat-div"></div>
+      <div class="hstat"><span class="hstat-num">AI</span><span class="hstat-lbl">Semantic Matching</span></div><div class="hstat-div"></div>
+      <div class="hstat"><span class="hstat-num">55/35/10</span><span class="hstat-lbl">Semantic / Skills / Exp</span></div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hv-card">
+      <div class="hvc-header"><span class="hvc-dot d-red"></span><span class="hvc-dot d-yellow"></span><span class="hvc-dot d-green"></span><span class="hvc-title">Score Composition</span></div>
+      <div class="hvc-rows">
+        <div class="hvc-row hvc-row--1"><span class="hvcr-name">Semantic similarity</span><span class="hvcr-bar"><span class="hvcr-fill" style="width:55%"></span></span><span class="hvcr-score score-hi">55%</span></div>
+        <div class="hvc-row hvc-row--2"><span class="hvcr-name">Skill coverage</span><span class="hvcr-bar"><span class="hvcr-fill" style="width:35%"></span></span><span class="hvcr-score score-hi">35%</span></div>
+        <div class="hvc-row hvc-row--3"><span class="hvcr-name">Experience fit</span><span class="hvcr-bar"><span class="hvcr-fill" style="width:10%"></span></span><span class="hvcr-score score-hi">10%</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="view-how-it-works" class="view section">
+  <div class="container">
+    <div class="section-head"><div class="section-tag">Pipeline</div><h2 class="section-title">How It Works</h2><p class="section-desc">Nine automated steps from raw resume files to ranked candidates</p></div>
+    <div class="steps-grid">
+      <div class="step-card" data-step="01"><div class="step-icon">📁</div><div class="step-num">Step 01</div><h3 class="step-title">Upload Resumes</h3><p class="step-desc">Add files individually or select a whole folder. PDF, DOCX, TXT and image resumes are supported.</p></div>
+      <div class="step-card" data-step="02"><div class="step-icon">📝</div><div class="step-num">Step 02</div><h3 class="step-title">Enter Job Description</h3><p class="step-desc">Paste the role, required skills and years of experience once for the whole batch.</p></div>
+      <div class="step-card" data-step="03"><div class="step-icon">🛡️</div><div class="step-num">Step 03</div><h3 class="step-title">Validate Files</h3><p class="step-desc">Extension, content type, file signature and size are checked. Invalid files are reported without stopping the batch.</p></div>
+      <div class="step-card" data-step="04"><div class="step-icon">📄</div><div class="step-num">Step 04</div><h3 class="step-title">Text Extraction</h3><p class="step-desc">PyMuPDF for PDFs, python-docx for DOCX. OCR with Tesseract runs only for scanned PDFs and images.</p></div>
+      <div class="step-card" data-step="05"><div class="step-icon">🧠</div><div class="step-num">Step 05</div><h3 class="step-title">Generate Embeddings</h3><p class="step-desc">A pretrained language model converts overlapping parts of the resume and job description into semantic vectors.</p></div>
+      <div class="step-card" data-step="06"><div class="step-icon">📐</div><div class="step-num">Step 06</div><h3 class="step-title">Semantic Similarity</h3><p class="step-desc">Cosine similarity of normalized vectors, calibrated into a 0–1 fit value with a fixed, documented range.</p></div>
+      <div class="step-card" data-step="07"><div class="step-icon">🔎</div><div class="step-num">Step 07</div><h3 class="step-title">Skill Matching</h3><p class="step-desc">A curated skill catalog with aliases finds required skills in the job description and checks each resume.</p></div>
+      <div class="step-card" data-step="08"><div class="step-icon">⏱️</div><div class="step-num">Step 08</div><h3 class="step-title">Experience Extraction</h3><p class="step-desc">Employment date ranges are merged without double counting; stated years are used otherwise. Unknown stays unknown.</p></div>
+      <div class="step-card" data-step="09"><div class="step-icon">🏆</div><div class="step-num">Step 09</div><h3 class="step-title">Score &amp; Rank</h3><p class="step-desc">Weighted score of 55% semantic, 35% skills, 10% experience, always within 0–100, then ranked.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="view-features" class="view section section-dark">
+  <div class="container">
+    <div class="section-head"><div class="section-tag">Capabilities</div><h2 class="section-title">Features</h2><p class="section-desc">Everything you need for transparent, automated resume screening</p></div>
+    <div class="features-grid">
+      <div class="feat-card feat-large"><div class="feat-icon">🧠</div><h3 class="feat-title">Smart Resume Analysis</h3><p class="feat-desc">Pretrained semantic AI understands context beyond keyword matching. No model is ever trained on your uploaded resumes.</p><div class="feat-tag">Semantic matching</div></div>
+      <div class="feat-card"><div class="feat-icon">🎯</div><h3 class="feat-title">Consistent Scoring</h3><p class="feat-desc">A resume's score depends only on that resume and the job description, never on the other files in the batch.</p></div>
+      <div class="feat-card"><div class="feat-icon">⚡</div><h3 class="feat-title">Bulk Processing</h3><p class="feat-desc">Screen many resumes in one request. One broken file never fails the batch.</p></div>
+      <div class="feat-card"><div class="feat-icon">📈</div><h3 class="feat-title">Honest Experience</h3><p class="feat-desc">Experience comes from employment dates or explicit statements. Missing data is shown as not stated.</p></div>
+      <div class="feat-card"><div class="feat-icon">🔎</div><h3 class="feat-title">Skill Gap Detection</h3><p class="feat-desc">See exactly which required skills each resume matches and which are missing.</p></div>
+      <div class="feat-card"><div class="feat-icon">📂</div><h3 class="feat-title">Open Original Resume</h3><p class="feat-desc">Open the exact file that was screened, and download the whole shortlist together as one ZIP file.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="view-screening" class="view section section-dark">
+  <div class="container">
+    <div class="section-head"><div class="section-tag">Application</div><h2 class="section-title">Resume Screening</h2><p class="section-desc">Enter the job description, add resumes and get ranked results</p>
+      <div class="health-pill" id="healthPill" data-state="checking"><span class="hp-dot"></span><span id="healthText">Checking backend…</span></div>
+    </div>
+
+    <div id="inputPanel">
+      <div class="input-stack">
+        <div class="app-card">
+          <div class="app-card-head"><span class="app-card-icon">📝</span><div><div class="app-card-title">Job Description</div><div class="app-card-sub">Paste the complete JD including required skills and years of experience</div></div></div>
+          <textarea id="jdText" class="jd-area" maxlength="20000" placeholder="Paste job description here…
+
+Example:
+We are looking for a Data Scientist with 3+ years of experience in Python, Machine Learning, SQL and Power BI. The ideal candidate should have expertise in scikit-learn, TensorFlow and data visualization."></textarea>
+          <div class="jd-footer"><span id="charCount" class="char-count">0 characters</span><span class="jd-tip">💡 Name the skills you require — they are matched against each resume</span></div>
+        </div>
+
+        <div class="app-card">
+          <div class="app-card-head"><span class="app-card-icon">📁</span><div><div class="app-card-title">Resume Upload</div><div class="app-card-sub">PDF · DOCX · TXT · PNG · JPG · WEBP — up to 10 MB each</div></div></div>
+          <div class="drop-zone" id="dropZone">
+            <input type="file" id="folderInput" webkitdirectory multiple>
+            <input type="file" id="fileInput" multiple accept=".pdf,.docx,.txt,.jpg,.jpeg,.png,.webp">
+            <div class="dz-icon">📂</div>
+            <div class="dz-title">Drop resumes or a folder here</div>
+            <div class="dz-sub">You can add more files before screening</div>
+            <div class="dz-btns"><button type="button" class="btn-upload" id="folderBtn">📁 Select Folder</button><button type="button" class="btn-upload btn-upload--ghost" id="fileBtn">📄 Select Files</button></div>
+          </div>
+          <div id="uploadNote" class="upload-note" hidden></div>
+          <div id="fileSummary" hidden>
+            <div class="file-summary">
+              <div class="fs-l"><span class="fs-num" id="fileCount">0</span><span class="fs-lbl">resumes ready</span></div>
+              <div class="fs-r"><span class="fs-sz" id="fileSize"></span><button type="button" class="fs-clr" id="clearBtn">✕ Clear all</button></div>
+            </div>
+            <div class="file-list" id="fileList"></div>
+          </div>
+        </div>
+
+        <div class="app-card">
+          <div class="app-card-head"><span class="app-card-icon">⚙️</span><div><div class="app-card-title">Settings</div><div class="app-card-sub">Choose how many ranked candidates to show and download</div></div></div>
+          <div class="ctrl-row"><div class="ctrl-grp"><label class="ctrl-lbl" for="topN">Top Candidates</label>
+            <select class="ctrl-sel" id="topN"><option value="10">Top 10</option><option value="20">Top 20</option><option value="50">Top 50</option><option value="100">Top 100</option><option value="0" selected>All</option></select></div></div>
+        </div>
+      </div>
+      <div class="run-wrap"><button type="button" class="btn-run" id="runBtn">🚀 Start Resume Screening<span class="run-chip">AI Matching</span></button></div>
+    </div>
+
+    <div id="resultsSection" hidden>
+      <div class="results-bar">
+        <div class="rb-info"><span class="rb-jd" id="rbJd"></span><span class="rb-meta" id="rbMeta"></span></div>
+        <div class="rb-actions"><button type="button" class="btn-upload btn-upload--ghost" id="editBtn">← Edit inputs</button><button type="button" class="btn-upload" id="newBtn">＋ New screening</button></div>
+      </div>
+      <div class="results-hdr"><div><h3 class="results-title">Screening Results</h3><p class="results-meta" id="resultsMeta"></p></div><div class="stat-pills" id="statPills"></div></div>
+      <div class="job-skills" id="jobSkills"></div>
+      <div class="results-toolbar">
+        <div class="rtb-l">
+          <div class="search-wrap"><span class="si">🔍</span><input type="text" id="searchInp" placeholder="Search name, email, skill, file…" aria-label="Search candidates"></div>
+          <div class="filter-group" id="filterGroup">
+            <button type="button" class="ftab on" data-filter="all">All</button>
+            <button type="button" class="ftab" data-filter="strong">✅ Strong</button>
+            <button type="button" class="ftab" data-filter="possible">⚠️ Possible</button>
+            <button type="button" class="ftab" data-filter="weak">❌ Weak</button>
+          </div>
+        </div>
+        <div class="rtb-r">
+          <label class="srt-lbl" for="sortSel">Sort:</label>
+          <select class="srt-sel" id="sortSel"><option value="score_d">Score ↓</option><option value="score_a">Score ↑</option><option value="sim_d">Similarity ↓</option><option value="exp_d">Experience ↓</option><option value="name_a">Name A–Z</option></select>
+          <label class="srt-lbl" for="topNResults">Show:</label>
+          <select class="srt-sel" id="topNResults"><option value="10">Top 10</option><option value="20">Top 20</option><option value="50">Top 50</option><option value="100">Top 100</option><option value="0" selected>All</option></select>
+          <button type="button" class="btn-csv" id="csvBtn">⬇ CSV</button>
+        </div>
+      </div>
+      <div class="tbl-outer">
+        <table class="results-tbl">
+          <thead><tr><th>Rank</th><th>Resume</th><th>Candidate</th><th>Email</th><th>Experience</th><th>Similarity</th><th>Match Score</th><th>Status</th><th>Missing Skills</th><th>Matched Skills</th></tr></thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+      <div class="tbl-footer" id="tblFooter"></div>
+      <div class="zip-bar"><button type="button" class="btn-zip" id="zipBtn">⬇ Download Selected Resumes (.zip)</button><span class="zip-note" id="zipNote"></span></div>
+      <div class="failed-panel" id="failedPanel" hidden></div>
+    </div>
+  </div>
+</section>
+
+<section id="view-architecture" class="view section">
+  <div class="container">
+    <div class="section-head"><div class="section-tag">Architecture</div><h2 class="section-title">System Architecture</h2><p class="section-desc">End-to-end pipeline from raw input to ranked output</p></div>
+    <div class="arch-flow">
+      <div class="arch-node"><div class="arch-icon">👤</div><div class="arch-label">User Input</div><div class="arch-sub">Job description + resume files or folder</div></div><div class="arch-arrow">↓</div>
+      <div class="arch-node"><div class="arch-icon">⚡</div><div class="arch-label">FastAPI Backend</div><div class="arch-sub">Multipart upload · validation · async batch handling</div></div><div class="arch-arrow">↓</div>
+      <div class="arch-node"><div class="arch-icon">📂</div><div class="arch-label">File Processing</div><div class="arch-sub">PyMuPDF · python-docx · Tesseract OCR only when needed</div></div><div class="arch-arrow">↓</div>
+      <div class="arch-node"><div class="arch-icon">🧠</div><div class="arch-label">Feature Processing</div><div class="arch-sub">Semantic embeddings · skill catalog · experience and email extraction</div></div><div class="arch-arrow">↓</div>
+      <div class="arch-node arch-node--accent"><div class="arch-icon">⚙️</div><div class="arch-label">Scoring Engine</div><div class="arch-sub">Weighted, renormalized when a component is unavailable</div><div class="arch-formula"><code>score = 100 × (0.55·semantic + 0.35·skills + 0.10·experience)</code></div></div><div class="arch-arrow">↓</div>
+      <div class="arch-node arch-node--result"><div class="arch-icon">🏆</div><div class="arch-label">Results Dashboard</div><div class="arch-sub">Ranked table · original resume viewer · filters · CSV export</div></div>
+    </div>
+    <div class="models-row">
+      <div class="model-card"><div class="mc-badge">Model</div><div class="mc-icon">🤖</div><div class="mc-name">Semantic Encoder</div><div class="mc-path">Sentence Transformers</div><div class="mc-desc">Pretrained language model, inference only</div></div>
+      <div class="model-card"><div class="mc-badge">Data</div><div class="mc-icon">📚</div><div class="mc-name">Skill Catalog</div><div class="mc-path">data/skills.json</div><div class="mc-desc">Canonical skills with aliases, easy to extend</div></div>
+      <div class="model-card"><div class="mc-badge">Logic</div><div class="mc-icon">🎚️</div><div class="mc-name">Bounded Scoring</div><div class="mc-path">scoring.py</div><div class="mc-desc">Fixed calibration, no batch-dependent scalers</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="view-about" class="view section about-view">
+  <div class="container about-container">
+    <div class="section-head"><div class="section-tag">About</div><h2 class="section-title">About</h2>
+      <p class="section-desc">A recruitment screening assistant that helps you organise resumes and compare them against a job description.</p></div>
+
+    <div class="about-intro">
+      <div class="about-panel"><div class="about-icon">🎯</div><h3>What is ResumeML?</h3>
+        <p>ResumeML reads a batch of resumes, compares each one with your job description and ranks the candidates by how closely they match. You see the evidence behind every ranking: matched skills, missing skills, experience and email.</p></div>
+      <div class="about-panel"><div class="about-icon">💡</div><h3>Why it was built</h3>
+        <p>Reading hundreds of resumes by hand is slow and inconsistent. ResumeML gives every resume the same first-pass comparison, so recruiters can spend their time on the candidates who look most relevant.</p></div>
+      <div class="about-panel"><div class="about-icon">⚖️</div><h3>What the score means</h3>
+        <p>The match score runs from 0 to 100 and shows how well a resume fits the job description. It supports screening, it is not a hiring decision, and it is not a probability of being hired. People should always review the results.</p></div>
+    </div>
+
+    <div class="about-block">
+      <h3 class="about-heading">Technology stack</h3>
+      <div class="about-grid">
+        <div class="about-card"><div class="about-icon">🐍</div><h4>Python</h4><p>Powers the screening logic and resume processing.</p></div>
+        <div class="about-card"><div class="about-icon">⚡</div><h4>FastAPI</h4><p>Fast, documented web API that handles uploads and results.</p></div>
+        <div class="about-card"><div class="about-icon">🤖</div><h4>Sentence Transformers</h4><p>Pretrained language AI used for semantic matching.</p></div>
+        <div class="about-card"><div class="about-icon">📑</div><h4>PyMuPDF &amp; python-docx</h4><p>Read text from PDF and Word resumes.</p></div>
+        <div class="about-card"><div class="about-icon">👁️</div><h4>OCR</h4><p>Tesseract and OpenCV read scanned and image-based resumes.</p></div>
+        <div class="about-card"><div class="about-icon">✅</div><h4>Pydantic</h4><p>Validates every request and response.</p></div>
+        <div class="about-card"><div class="about-icon">🖥️</div><h4>HTML, CSS &amp; JavaScript</h4><p>The interface you are using now, with no extra framework.</p></div>
+        <div class="about-card"><div class="about-icon">🚀</div><h4>Uvicorn</h4><p>Runs the application locally and in the cloud.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer"><div class="footer-inner">
+  <div class="footer-logo"><div class="logo-mark">⚡</div><span>Resume<strong>ML</strong></span></div>
+  <p class="footer-copy">Resume Screening using Machine Learning · Built with Python &amp; FastAPI</p>
+</div></footer>
+
+<div class="spinner-overlay" id="spinnerOverlay" role="status" aria-live="polite">
+  <div class="spin-card">
+    <div class="spin-rings"><div class="sr sr1"></div><div class="sr sr2"></div><div class="sr sr3"></div><div class="sr-core">⚡</div></div>
+    <div class="spin-title">Screening Resumes</div>
+    <div class="spin-msg" id="spinMsg">Starting…</div>
+    <div class="spin-bar"><div class="spin-fill" id="spinFill"></div></div>
+    <div class="spin-hint" id="spinHint"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="alert">
+  <button type="button" class="toast-x" id="toastX" aria-label="Close">✕</button>
+  <div class="toast-title" id="toastTitle">Error</div>
+  <div class="toast-body" id="toastBody"></div>
+</div>
+
+<script src="config.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
