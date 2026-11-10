@@ -21,6 +21,9 @@ MIN_JD_CHARS = 30
 MAX_JD_CHARS = 20000
 MIN_RESUME_CHARS = 40
 OCR_MAX_PAGES = int(os.getenv("OCR_MAX_PAGES", "4"))
+MODEL_THREADS = int(os.getenv("MODEL_THREADS", "1"))
+MODEL_WAIT_SECONDS = int(os.getenv("MODEL_WAIT_SECONDS", "20"))
+SCREEN_CONCURRENCY = int(os.getenv("SCREEN_CONCURRENCY", "1"))
 TESSERACT_CMD = os.getenv("TESSERACT_CMD") or None
 CORS_ORIGINS = [o.strip() for o in os.getenv("CORS_ORIGINS", "*").split(",") if o.strip()]
 

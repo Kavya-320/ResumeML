@@ -33,11 +33,14 @@ async def _cleanup_loop() -> None:
 @asynccontextmanager
 async def lifespan(_: FastAPI):
     async def warm_up() -> None:
-        try:
-            await run_in_threadpool(scoring.load_model)
-            logger.info("Model ready: %s", config.MODEL_NAME)
-        except Exception:
-            logger.exception("Model failed to load")
+        for attempt in range(1, 4):
+            try:
+                await run_in_threadpool(scoring.load_model)
+                logger.info("Model ready: %s", config.MODEL_NAME)
+                return
+            except Exception:
+                logger.exception("Model failed to load (attempt %d of 3)", attempt)
+                await asyncio.sleep(15)
 
     tasks = [asyncio.create_task(warm_up()), asyncio.create_task(_cleanup_loop())]
     yield
@@ -81,19 +84,22 @@ async def health() -> HealthResponse:
     return HealthResponse(
         status="ok",
         model_loaded=scoring.model_loaded(),
+        model_status=scoring.model_status(),
+        model_error=scoring.load_error(),
         model_name=config.MODEL_NAME,
         ocr_available=await run_in_threadpool(ocr_available),
     )
 
 
 async def _ensure_model() -> None:
-    for _ in range(600):
-        if scoring.model_loaded():
+    for _ in range(config.MODEL_WAIT_SECONDS * 2):
+        status = scoring.model_status()
+        if status == "ready":
             return
-        if scoring.load_error():
-            break
+        if status == "failed":
+            raise HTTPException(503, scoring.load_error() or "The ML model failed to load.")
         await asyncio.sleep(0.5)
-    raise HTTPException(503, scoring.load_error() or "The ML model is still loading. Try again shortly.")
+    raise HTTPException(503, "The ML model is still loading. Wait a minute and try again.")
 
 
 def _process(data: bytes, name: str, ext: str, ctype: Optional[str], job: scoring.JobContext) -> Candidate:
@@ -123,7 +129,7 @@ async def screen(job_description: str = Form(...), resumes: list[UploadFile] = F
 
     limit = config.MAX_FILE_MB * 1024 * 1024
     seen: dict[str, str] = {}
-    semaphore = asyncio.Semaphore(2)
+    semaphore = asyncio.Semaphore(max(1, config.SCREEN_CONCURRENCY))
 
     async def handle(upload: UploadFile) -> Candidate | FailedResume:
         name = safe_filename(upload.filename)

@@ -59,6 +59,8 @@ class ScreenResponse(BaseModel):
 class HealthResponse(BaseModel):
     status: str
     model_loaded: bool
+    model_status: Literal["loading", "ready", "failed"]
+    model_error: Optional[str] = None
     model_name: str
     ocr_available: bool
 

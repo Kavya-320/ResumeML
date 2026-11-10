@@ -65,15 +65,20 @@ async function checkHealth() {
     const res = await fetch(API_BASE + '/api/health');
     if (!res.ok) throw new Error('bad status');
     const h = await res.json();
-    if (!h.model_loaded) {
-      setHealth('warn', 'Backend online · loading ML model…');
+    if (h.model_status === 'failed') {
+      setHealth('down', 'Backend online · ML model failed to load' + (h.model_error ? ': ' + h.model_error : ''));
+      state.healthTimer = setTimeout(checkHealth, 8000);
+      return;
+    }
+    if (h.model_status !== 'ready') {
+      setHealth('warn', 'Backend online · loading ML model (this can take a few minutes after a restart)…');
       state.healthTimer = setTimeout(checkHealth, 3000);
       return;
     }
     setHealth(h.ocr_available ? 'ok' : 'warn',
       h.ocr_available ? 'Backend online · model ready' : 'Backend online · model ready · OCR unavailable (scanned files will fail)');
   } catch {
-    setHealth('down', 'Backend unreachable');
+    setHealth('down', 'Backend unreachable (it may be restarting)');
     state.healthTimer = setTimeout(checkHealth, 8000);
   }
   pill.hidden = false;
@@ -229,13 +234,14 @@ function sendScreening(formData, onUpload) {
     xhr.responseType = 'text';
     xhr.upload.onprogress = e => { if (e.lengthComputable) onUpload(e.loaded / e.total); };
     xhr.upload.onload = () => onUpload(1);
-    xhr.onerror = () => reject(new Error('Cannot reach the server. Check that the backend is running and try again.'));
+    xhr.onerror = () => reject(new Error('The connection to the server was lost. The server may have restarted or run out of memory. Wait a minute, check the status above, and try again with fewer resumes.'));
     xhr.ontimeout = () => reject(new Error('The request timed out.'));
     xhr.onload = () => {
       let body = null;
       try { body = JSON.parse(xhr.responseText); } catch { body = null; }
       if (xhr.status >= 200 && xhr.status < 300 && body) return resolve(body);
-      reject(new Error((body && body.error) || `Server returned status ${xhr.status}.`));
+      const gateway = [502, 503, 504].includes(xhr.status) ? ' The server is restarting, still loading, or took too long. Wait a minute and try again with fewer resumes.' : '';
+      reject(new Error((body && body.error) || `Server returned status ${xhr.status}.${gateway}`));
     };
     xhr.send(formData);
   });

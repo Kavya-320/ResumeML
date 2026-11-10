@@ -1,4 +1,5 @@
 import math
+import os
 import threading
 from dataclasses import dataclass
 from typing import Callable, Optional
@@ -14,6 +15,7 @@ Encoder = Callable[[list[str]], np.ndarray]
 
 _encoder: Optional[Encoder] = None
 _load_error: Optional[str] = None
+_loading = False
 _lock = threading.Lock()
 
 CHUNK_WORDS = 180
@@ -36,21 +38,37 @@ def load_error() -> Optional[str]:
     return _load_error
 
 
+def model_status() -> str:
+    if _encoder is not None:
+        return "ready"
+    if _loading:
+        return "loading"
+    return "failed" if _load_error else "loading"
+
+
 def load_model() -> None:
-    global _encoder, _load_error
+    global _encoder, _load_error, _loading
     with _lock:
         if _encoder is not None:
             return
+        _loading = True
         try:
-            from sentence_transformers import SentenceTransformer
+            os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
+            from fastembed import TextEmbedding
 
-            model = SentenceTransformer(config.MODEL_NAME, cache_folder=config.MODEL_CACHE_DIR)
+            model = TextEmbedding(
+                model_name=config.MODEL_NAME,
+                cache_dir=config.MODEL_CACHE_DIR,
+                threads=max(1, config.MODEL_THREADS),
+            )
         except Exception as exc:
-            _load_error = f"Could not load model '{config.MODEL_NAME}': {exc}"
+            _load_error = f"Could not load model '{config.MODEL_NAME}': {str(exc)[:300]}"
             raise
+        finally:
+            _loading = False
 
         def encode(texts: list[str]) -> np.ndarray:
-            return model.encode(texts, batch_size=32, show_progress_bar=False, convert_to_numpy=True)
+            return np.asarray(list(model.embed(texts, batch_size=8)))
 
         _encoder = encode
         _load_error = None
